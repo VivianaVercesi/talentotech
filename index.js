@@ -86,7 +86,7 @@ async function deleteProduct(productId) {
         method: 'DELETE'
     };
 
-    const result = await fetchAPI(`/products/${productID}`, options);
+    const result = await fetchAPI(`/products/${productId}`, options);
     console.log('Producto eliminado exitosamente');
     console.log(JSON.stringify(result, null, 2));
     
@@ -133,7 +133,7 @@ async function processCommand() {
     switch (httpMethod) {
         case 'GET':
             if(resource.includes('/')){
-                const [, productID] = resource.split('/');
+                const [, productId] = resource.split('/');
                 await getProductById(productId)
             } else if (resource === 'products') {
                 await getAllProducts();
@@ -159,7 +159,7 @@ async function processCommand() {
 
          case 'DELETE':
             if(resource.include('/')){
-                const [, productID] = resource.split('/');
+                const [, productId] = resource.split('/');
                 await deleteProduct(productId)
             } else {
                 console.error('Debes especificar el ID del producto. Uso: npm run start DELETE product/<id>');
